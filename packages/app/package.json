@@ -8,7 +8,7 @@
 		}
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "set PORT=3018 && react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts --env=jsdom"
 	},

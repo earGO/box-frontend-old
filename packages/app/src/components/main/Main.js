@@ -6,9 +6,16 @@ function Main() {
   return (
     <Box m={3}>
       <Heading mb={2}>ursip frontend modules</Heading>
-      <Link bordered to="/nsi">
-        nsi
-      </Link>
+      <Box m={2}>
+        <Link bordered to="/nsi">
+          nsi
+        </Link>
+      </Box>
+      <Box m={2}>
+        <Link bordered to="/project-page">
+          project-page
+        </Link>
+      </Box>
     </Box>
   )
 }
