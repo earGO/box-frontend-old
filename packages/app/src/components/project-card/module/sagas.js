@@ -11,21 +11,26 @@ const loadTabs = function*() {
   const projectId = yield select(selectors.projectIdSelector)
   yield put(projectService.actions.loadTabs(projectId.projectId))
 }
-/*it loads sections based on current selected tabid*/
+/*it loads sections based on current selected tab id*/
 const loadSections = function*() {
   const tabId = yield select(selectors.selectedTabsSelector)
-  console.log(tabId)
   yield put(projectService.actions.loadSections(tabId))
 }
 
-/*It preselects a tab based on current state and */
+/*it loads section fields based on current selected section id*/
+const loadFields = function*() {
+  const sectionId = yield select(selectors.selectedSectionSelector)
+  yield put(projectService.actions.loadFields(sectionId))
+}
+
+/*It preselects a tab first time project loaded*/
 const preSelectTab = function*() {
   const TABS = yield select(selectors.tabsSelector)
   const selectedTab = yield select(selectors.selectedTabsSelector)
   yield put(actions.preselectTab(TABS, selectedTab))
 }
 
-/*It preselects a tab based on current state and */
+/*It preselects a section based on current tab selected - always first one*/
 const preSelectSection = function*() {
   const sections = yield select(selectors.sectionsSelector)
   yield put(actions.preselectSection(sections))
@@ -38,5 +43,7 @@ export default function*() {
     takeLatest(types.PRESELECT_TAB, loadSections),
     takeEvery(success(projectService.types.LOAD_SECTIONS), preSelectSection),
     takeEvery(types.SELECT_TAB, loadSections),
+    takeLatest(types.PRESELECT_SECTION, loadFields),
+    takeEvery(types.SELECT_SECTION, loadFields),
   ])
 }

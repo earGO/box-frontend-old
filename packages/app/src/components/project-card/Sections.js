@@ -15,7 +15,7 @@ function Sections({ projectSections }) {
   const selectSection = id => dispatch(actions.selectSection(id))
   if (projectSections !== undefined) {
     return (
-      <ContentBox width={352} style={{ alignSelf: 'flex-start' }}>
+      <ContentBox contentwidth={352} style={{ alignSelf: 'flex-start' }}>
         <Bordered flexDirection={'column'}>
           <AddSection />
           <Flex flexDirection={'column'}>

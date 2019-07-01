@@ -6,14 +6,14 @@ import styled from 'styled-components'
 const ContentBoxStyle = styled(Flex)`
   padding-top: ${props => props.padding + 'px'};
   padding-bottom: ${props => props.padding + 'px'};
-  align-self: center;
+  align-self: ${props => props.alignSelf};
   justify-content: ${props => props.justifyContent};
   align-items: ${props => props.alignItems};
   margin: 0 auto;
   width: ${props => props.contentwidth + 'px'};
 `
 
-function ContentBox({ children, padding, justifyContent, alignItems, contentwidth, ...props }) {
+function ContentBox({ children, padding, justifyContent, alignItems, contentwidth, alignSelf, ...props }) {
   /*some private methods*/
   return (
     <ContentBoxStyle
@@ -21,6 +21,7 @@ function ContentBox({ children, padding, justifyContent, alignItems, contentwidt
       justifyContent={justifyContent}
       contentwidth={contentwidth}
       alignItems={alignItems}
+      alignSelf={alignSelf}
       {...props}
     >
       {children}
@@ -38,6 +39,7 @@ ContentBox.defaultProps = {
   padding: 0,
   justifyContent: 'flex-start',
   contentwidth: 1120,
+  alignSelf: 'center',
 }
 
 export default ContentBox

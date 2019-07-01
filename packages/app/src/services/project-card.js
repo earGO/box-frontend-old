@@ -55,12 +55,12 @@ export const actions = {
       },
     }
   },
-  loadFields() {
+  loadFields(sectionId) {
     return {
       type: types.LOAD_FIELDS,
       payload: {
         request: {
-          url: `${endpoints.fields}`,
+          url: `${endpoints.fields}` + `${sectionId}`,
         },
       },
     }
@@ -97,7 +97,7 @@ export default function projectCardReducer(state = {}, { type, payload }) {
     case success(types.LOAD_FIELDS):
       return {
         ...state,
-        fields: payload.data,
+        fields: payload.data.data,
       }
     default:
       return state

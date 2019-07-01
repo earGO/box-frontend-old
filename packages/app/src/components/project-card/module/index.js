@@ -16,5 +16,5 @@ export default {
     }),
   },
   sagas: [sagas],
-  initialActions: [projectCard.actions.loadProject(), projectCard.actions.loadFields()],
+  initialActions: [projectCard.actions.loadProject()],
 }
